@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Animation Dark Theme</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        .info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #00ffff;
+            font-size: 14px;
+            z-index: 10;
+        }
+        
+        .info h3 {
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .morph-path {
+            fill: none;
+            stroke: #ff6b6b;
+            stroke-width: 3;
+            filter: drop-shadow(0 0 10px #ff6b6b);
+        }
+        
+        .circuit-line {
+            fill: none;
+            stroke: #4ecdc4;
+            stroke-width: 2;
+            stroke-dasharray: 5,5;
+            filter: drop-shadow(0 0 5px #4ecdc4);
+        }
+        
+        .glow-circle {
+            fill: none;
+            stroke: #ffe66d;
+            stroke-width: 2;
+            filter: drop-shadow(0 0 15px #ffe66d);
+        }
+        
+        .particle {
+            fill: #ff6b6b;
+            filter: drop-shadow(0 0 8px #ff6b6b);
+        }
+        
+        .logo-text {
+            fill: #ffffff;
+            font-family: 'Courier New', monospace;
+            font-size: 48px;
+            font-weight: bold;
+            text-anchor: middle;
+            filter: drop-shadow(0 0 20px #ffffff);
+        }
+        
+        .grid-line {
+            stroke: #333;
+            stroke-width: 1;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="info">
+            <h3>SVG Animation Sample</h3>
+            <p>• Morphing shapes</p>
+            <p>• Circuit-like animations</p>
+            <p>• Glowing effects</p>
+            <p>• Particle trails</p>
+        </div>
+        
+        <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+            <!-- Grid background -->
+            <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" class="grid-line"/>
+                </pattern>
+                
+                <!-- Gradient definitions -->
+                <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#4ecdc4;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#ffe66d;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            
+            <!-- Grid background -->
+            <rect width="100%" height="100%" fill="url(#grid)" />
+            
+            <!-- Morphing geometric shape -->
+            <path class="morph-path" d="M300,200 L500,200 L400,350 Z">
+                <animate attributeName="d" 
+                         values="M300,200 L500,200 L400,350 Z;
+                                 M350,150 L550,250 L350,400 L150,250 Z;
+                                 M400,100 C500,100 600,200 500,300 C400,400 300,300 300,200 C300,100 400,100 400,100 Z;
+                                 M300,200 L500,200 L400,350 Z"
+                         dur="6s" 
+                         repeatCount="indefinite"/>
+            </path>
+            
+            <!-- Circuit-like paths -->
+            <g class="circuit-lines">
+                <path class="circuit-line" d="M100,100 L200,100 L200,200 L300,200">
+                    <animate attributeName="stroke-dashoffset" 
+                             values="0;-20" 
+                             dur="2s" 
+                             repeatCount="indefinite"/>
+                </path>
+                
+                <path class="circuit-line" d="M800,150 L900,150 L900,250 L1000,250 L1000,350">
+                    <animate attributeName="stroke-dashoffset" 
+                             values="0;-20" 
+                             dur="3s" 
+                             repeatCount="indefinite"/>
+                </path>
+                
+                <path class="circuit-line" d="M600,500 L700,500 L700,600 L800,600">
+                    <animate attributeName="stroke-dashoffset" 
+                             values="0;-20" 
+                             dur="2.5s" 
+                             repeatCount="indefinite"/>
+                </path>
+            </g>
+            
+            <!-- Pulsing circles -->
+            <g class="pulse-circles">
+                <circle class="glow-circle" cx="200" cy="150" r="30">
+                    <animate attributeName="r" 
+                             values="30;50;30" 
+                             dur="3s" 
+                             repeatCount="indefinite"/>
+                    <animate attributeName="opacity" 
+                             values="1;0.3;1" 
+                             dur="3s" 
+                             repeatCount="indefinite"/>
+                </circle>
+                
+                <circle class="glow-circle" cx="900" cy="200" r="25">
+                    <animate attributeName="r" 
+                             values="25;45;25" 
+                             dur="4s" 
+                             repeatCount="indefinite"/>
+                    <animate attributeName="opacity" 
+                             values="1;0.2;1" 
+                             dur="4s" 
+                             repeatCount="indefinite"/>
+                </circle>
+                
+                <circle class="glow-circle" cx="750" cy="550" r="20">
+                    <animate attributeName="r" 
+                             values="20;40;20" 
+                             dur="2.5s" 
+                             repeatCount="indefinite"/>
+                    <animate attributeName="opacity" 
+                             values="1;0.4;1" 
+                             dur="2.5s" 
+                             repeatCount="indefinite"/>
+                </circle>
+            </g>
+            
+            <!-- Floating particles -->
+            <g class="particles">
+                <circle class="particle" cx="150" cy="300" r="3">
+                    <animateMotion dur="8s" repeatCount="indefinite">
+                        <path d="M0,0 Q200,-100 400,0 T800,0"/>
+                    </animateMotion>
+                    <animate attributeName="opacity" 
+                             values="0;1;1;0" 
+                             dur="8s" 
+                             repeatCount="indefinite"/>
+                </circle>
+                
+                <circle class="particle" cx="600" cy="200" r="2">
+                    <animateMotion dur="10s" repeatCount="indefinite">
+                        <path d="M0,0 Q-200,150 -400,300 T-800,300"/>
+                    </animateMotion>
+                    <animate attributeName="opacity" 
+                             values="0;1;1;0" 
+                             dur="10s" 
+                             repeatCount="indefinite"/>
+                </circle>
+                
+                <circle class="particle" cx="800" cy="400" r="4">
+                    <animateMotion dur="6s" repeatCount="indefinite" begin="2s">
+                        <path d="M0,0 Q-300,-200 -600,0 T-1200,0"/>
+                    </animateMotion>
+                    <animate attributeName="opacity" 
+                             values="0;1;1;0" 
+                             dur="6s" 
+                             repeatCount="indefinite" 
+                             begin="2s"/>
+                </circle>
+            </g>
+            
+            <!-- Hexagonal pattern -->
+            <g class="hex-pattern" transform="translate(700,300)">
+                <polygon points="0,-40 35,-20 35,20 0,40 -35,20 -35,-20" 
+                         fill="none" 
+                         stroke="#4ecdc4" 
+                         stroke-width="2"
+                         filter="drop-shadow(0 0 8px #4ecdc4)">
+                    <animateTransform attributeName="transform" 
+                                      type="rotate" 
+                                      values="0;360" 
+                                      dur="12s" 
+                                      repeatCount="indefinite"/>
+                </polygon>
+                
+                <polygon points="0,-20 18,-10 18,10 0,20 -18,10 -18,-10" 
+                         fill="none" 
+                         stroke="#ffe66d" 
+                         stroke-width="1"
+                         filter="drop-shadow(0 0 5px #ffe66d)">
+                    <animateTransform attributeName="transform" 
+                                      type="rotate" 
+                                      values="360;0" 
+                                      dur="8s" 
+                                      repeatCount="indefinite"/>
+                </polygon>
+            </g>
+            
+            <!-- Central logo text -->
+            <text class="logo-text" x="600" y="420">
+                <tspan>DARK</tspan>
+                <animate attributeName="opacity" 
+                         values="0.5;1;0.5" 
+                         dur="4s" 
+                         repeatCount="indefinite"/>
+            </text>
+            
+            <text class="logo-text" x="600" y="480">
+                <tspan>MOTION</tspan>
+                <animate attributeName="opacity" 
+                         values="1;0.5;1" 
+                         dur="4s" 
+                         repeatCount="indefinite"/>
+            </text>
+            
+            <!-- Connecting lines that appear and disappear -->
+            <g class="connection-lines">
+                <line x1="200" y1="150" x2="400" y2="275" 
+                      stroke="#ff6b6b" 
+                      stroke-width="1" 
+                      opacity="0.6"
+                      filter="drop-shadow(0 0 3px #ff6b6b)">
+                    <animate attributeName="opacity" 
+                             values="0;0.6;0" 
+                             dur="5s" 
+                             repeatCount="indefinite"/>
+                </line>
+                
+                <line x1="900" y1="200" x2="700" y2="300" 
+                      stroke="#4ecdc4" 
+                      stroke-width="1" 
+                      opacity="0.6"
+                      filter="drop-shadow(0 0 3px #4ecdc4)">
+                    <animate attributeName="opacity" 
+                             values="0;0.6;0" 
+                             dur="7s" 
+                             repeatCount="indefinite" 
+                             begin="2s"/>
+                </line>
+                
+                <line x1="750" y1="550" x2="600" y2="450" 
+                      stroke="#ffe66d" 
+                      stroke-width="1" 
+                      opacity="0.6"
+                      filter="drop-shadow(0 0 3px #ffe66d)">
+                    <animate attributeName="opacity" 
+                             values="0;0.6;0" 
+                             dur="6s" 
+                             repeatCount="indefinite" 
+                             begin="1s"/>
+                </line>
+            </g>
+        </svg>
+    </div>
+</body>
+</html>
