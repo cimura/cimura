@@ -1,9 +1,6 @@
-<div align="center">
-
 # 👋👋👋👋👋👋
 
-<div align="center">
-<img src="https://github-readme-stats-cimura2893-4btm4674.leapcell.dev/api?username=cimura&show_icons=true&theme=radical" />
+<div align="left">
+<img src="https://my-github-readme-stats-alpha.vercel.app/api?username=cimura&show_icons=true&theme=radical&count_private=true&include_all_commits=true" />
 </br>
-<img src="https://github-readme-stats-cimura2893-4btm4674.leapcell.dev/api/top-langs?username=cimura&layout=donut&theme=radical" />
-</div>
+<img src="https://my-github-readme-stats-alpha.vercel.app/api/top-langs?username=cimura&layout=donut&theme=radical&count_private=true&include_all_commits=true" />
